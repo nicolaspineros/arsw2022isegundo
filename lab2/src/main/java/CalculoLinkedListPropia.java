@@ -1,15 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CalculoMediaDesviacion {
+public class CalculoLinkedListPropia {
 
     public static void main(String[] args) {
-        List<Double> listaNumeros = new LinkedList<Double>();
+        List<Double> listaNumeros = new LinkedListPropia<>();
         listaNumeros = LectorArchivo.leerListaArchivo(args[0],listaNumeros);
+        System.out.println(listaNumeros.getClass());
         Double media = Stats.calculoMedia(listaNumeros);
         Double desviacion = Stats.calculoDesviacion(listaNumeros);
         System.out.printf("Media: %.2f \n", media);
