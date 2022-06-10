@@ -8,20 +8,23 @@ import java.util.List;
 public class CalculoMediaDesviacion {
 
     public static void main(String[] args) {
-        List<Integer> listaNumeros = new LinkedList<Integer>();
+        List<Double> listaNumeros = new LinkedList<Double>();
         listaNumeros = leerListaArchivo(args[0],listaNumeros);
-        System.out.println("Total de numeros: " + listaNumeros.size());
-        //System.out.println("Media: " + calcularMedia(listaNumeros));
+        Stats calculos = new Stats();
+        Double media = calculos.calculoMedia(listaNumeros);
+        Double desviacion = calculos.calculoDesviacion(listaNumeros);
+        System.out.printf("Media: %.2f \n", media);
+        System.out.printf("Desviacion: %.2f" , desviacion);
     }
 
 
-    private static List<Integer> leerListaArchivo(String archivo, List<Integer> ln) {
+    private static List<Double> leerListaArchivo(String archivo, List<Double> ln) {
         try {
             BufferedReader lector = new BufferedReader(new FileReader(archivo));
             String linea = lector.readLine();
             while (linea != null){
                 System.out.println(linea);
-                ln.add(Integer.parseInt(linea));
+                ln.add(Double.parseDouble(linea));
                 linea = lector.readLine();
             }
         } catch (FileNotFoundException e) {
@@ -31,6 +34,5 @@ public class CalculoMediaDesviacion {
         }
         return ln;
     }
-
 
 }
